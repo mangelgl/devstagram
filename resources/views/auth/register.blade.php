@@ -15,7 +15,7 @@
                 @csrf
                 <div class="mb-5">
                     <label for="name" class="mb-2 block uppercase text-gray-500 font-bold">Nombre</label>
-                    <input 
+                    <input
                     id="name"
                     name="name"
                     type="text"
@@ -29,7 +29,7 @@
                 </div>
                 <div class="mb-5">
                     <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">Nombre de usuario</label>
-                    <input 
+                    <input
                     id="username"
                     name="username"
                     type="text"
@@ -43,7 +43,7 @@
                 </div>
                 <div class="mb-5">
                     <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">Email</label>
-                    <input 
+                    <input
                     id="email"
                     name="email"
                     type="email"
@@ -57,7 +57,7 @@
                 </div>
                 <div class="mb-5">
                     <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">Contraseña</label>
-                    <input 
+                    <input
                     id="password"
                     name="password"
                     type="password"
@@ -70,7 +70,7 @@
                 </div>
                 <div class="mb-5">
                     <label for="password_confirmation" class="mb-2 block uppercase text-gray-500 font-bold">Repite tu contraseña</label>
-                    <input 
+                    <input
                     id="password_confirmation"
                     name="password_confirmation"
                     type="password"
@@ -79,9 +79,9 @@
                     />
                 </div>
 
-                <input 
-                    type="submit" 
-                    value="Crear cuenta" 
+                <input
+                    type="submit"
+                    value="Crear cuenta"
                     class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg"
                 />
             </form>
