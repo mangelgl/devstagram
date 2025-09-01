@@ -18,7 +18,7 @@
 
             @auth
                 <nav aria-label="Authenticated users menu" class="flex gap-2 items-center">
-                    <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('login') }}">
+                    <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('posts.index', ['user' => Auth::user()]) }}">
                         {{ auth()->user()->username }}
                     </a>
                     <form action="{{ route('logout') }}" method="POST">
