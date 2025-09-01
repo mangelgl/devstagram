@@ -20,3 +20,4 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 // Route model binding
 Route::get('/{user:username}', [PostController::class, 'index'])->middleware(['auth'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->middleware(['auth'])->name('posts.create');
