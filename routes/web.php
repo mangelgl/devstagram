@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ImagenController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,4 +21,8 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 // Route model binding
 Route::get('/{user:username}', [PostController::class, 'index'])->middleware(['auth'])->name('posts.index');
+
 Route::get('/posts/create', [PostController::class, 'create'])->middleware(['auth'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->middleware(['auth'])->name('posts.store');
+
+Route::post('/imagenes', [ImagenController::class, 'store'])->middleware(['auth'])->name('imagenes.store');

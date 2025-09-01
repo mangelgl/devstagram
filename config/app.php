@@ -123,4 +123,21 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    // En nuevas versiones no hace falta importar el provider y el alias
+    // porque Laravel lo hace automaticamente al detectar la libreria
+    // https://laravel.com/docs/9.x/upgrade#automatic-package-discovery
+    // 'providers' => [
+    //     /*
+    //     * Intervention Image - Image Manipulation
+    //     */
+    //     Intervention\Image\ImageServiceProvider::class
+    // ],
+
+    // 'aliases' => [
+    //     /*
+    //     * Intervention Image - Image Manipulation
+    //     */
+    //     'Image' => Intervention\Image\Facades\Image::class,
+    // ]
+
 ];

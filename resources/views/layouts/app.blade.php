@@ -7,8 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Devstagram - @yield('titulo')</title>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    @vite('resources/css/app.css')
+    {{-- La directiva stack permite agregar estilos css para ciertos elementos de la página y que no se cargen siempre --}}
+    @stack('styles')
+    {{-- Vite --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-gray-100">
@@ -19,24 +21,29 @@
             @auth
                 <nav aria-label="Authenticated users menu" class="flex gap-2 items-center">
                     {{-- Crear publicaciones --}}
-                    <a href="{{ route('posts.create') }}" class="flex items-center gap-2 bg-white border p-2 text-gray-600 rounded text-sm uppercase font-bold cursor-pointer">
+                    <a href="{{ route('posts.create') }}"
+                        class="flex items-center gap-2 bg-white border p-2 text-gray-600 rounded text-sm uppercase font-bold cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
-                            <path fill-rule="evenodd" d="M1 8a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 8.07 3h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 16.07 6H17a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8Zm13.5 3a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM10 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd"
+                                d="M1 8a2 2 0 0 1 2-2h.93a2 2 0 0 0 1.664-.89l.812-1.22A2 2 0 0 1 8.07 3h3.86a2 2 0 0 1 1.664.89l.812 1.22A2 2 0 0 0 16.07 6H17a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8Zm13.5 3a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM10 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+                                clip-rule="evenodd" />
                         </svg>
                         Crear
                     </a>
                     {{-- Nombre de usuario --}}
-                    <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('posts.index', ['user' => Auth::user()]) }}">
+                    <a class="font-bold uppercase text-gray-600 text-sm"
+                        href="{{ route('posts.index', ['user' => Auth::user()]) }}">
                         {{ auth()->user()->username }}
                     </a>
                     {{-- Cerrar sesión --}}
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="font-bold uppercase text-gray-600 text-sm cursor-pointer">Cerrar sesión</button>
+                        <button type="submit" class="font-bold uppercase text-gray-600 text-sm cursor-pointer">Cerrar
+                            sesión</button>
                     </form>
                 </nav>
             @endauth
-            
+
             @guest
                 <nav aria-label="Guests menu" class="flex gap-2 items-center">
                     <a class="font-bold uppercase text-gray-600 text-sm" href="{{ route('login') }}">Login</a>
@@ -47,7 +54,7 @@
     </header>
 
     <main class="container mx-auto mt-10 text-center">
-        <h2 class="font-black text-center text-2xl mb-10" >@yield('titulo')</h2>
+        <h2 class="font-black text-center text-2xl mb-10">@yield('titulo')</h2>
         @yield('contenido')
     </main>
 
