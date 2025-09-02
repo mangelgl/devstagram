@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    {{-- Favicon --}}
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <title>Devstagram - @yield('titulo')</title>
-    {{-- La directiva stack permite agregar estilos css para ciertos elementos de la página y que no se cargen siempre --}}
+    {{-- La directiva stack permite agregar estilos css para ciertos
+    elementos y que no se cargen en todas las páginas --}}
     @stack('styles')
     {{-- Vite --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
