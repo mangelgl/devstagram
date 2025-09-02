@@ -16,6 +16,10 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        // Modificar el username para evitar duplicados
+        $request->request->add(['username' => strtolower($request->username)]);
+
+        // Validacion
         $request->validate([
             'name' => 'required|max:30',
             'username' => 'required|unique:users|min:3|max:20',
