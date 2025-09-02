@@ -18,4 +18,13 @@ class Post extends Model
         'imagen',
         'user_id',
     ];
+
+    public function user()
+    {
+        /**
+         * One to One Relation
+         * A post belongs to an unique user
+         */
+        return $this->belongsTo(User::class)->select(['id', 'name', 'username', 'email']);
+    }
 }
