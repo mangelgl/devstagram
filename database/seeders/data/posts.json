@@ -1,0 +1,213 @@
+[
+    {
+        "id": 1,
+        "titulo": "¿Tabs o espacios?",
+        "descripcion": "¿Qué prefieren usar para indentar el código? Tabs o espacios. Yo soy del equipo espacios.",
+        "imagen": "1.jpg",
+        "user_id": 1,
+        "comentarios": [
+            { "user_id": 2, "comentario": "Tabs, siempre. Ocupan menos." },
+            { "user_id": 3, "comentario": "Espacios, la consistencia manda." }
+        ]
+    },
+    {
+        "id": 2,
+        "titulo": "Mi primer commit en GitHub",
+        "descripcion": "Hoy he hecho mi primer push a un repositorio público. Siento que ya soy parte de la comunidad.",
+        "imagen": "2.jpg",
+        "user_id": 2,
+        "comentarios": [
+            {
+                "user_id": 4,
+                "comentario": "¡Felicidades! El primero siempre es especial."
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "titulo": "Error 500 sin explicación",
+        "descripcion": "Estoy recibiendo un error 500 en mi aplicación Laravel y no aparece nada en los logs. ¿Alguna idea?",
+        "imagen": "3.jpg",
+        "user_id": 3,
+        "comentarios": [
+            {
+                "user_id": 1,
+                "comentario": "Activa el debug en el .env, puede que te muestre más detalles."
+            },
+            {
+                "user_id": 2,
+                "comentario": "A mí me pasó por permisos en el storage."
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "titulo": "Mi editor favorito",
+        "descripcion": "Llevo años con VS Code. ¿Qué editor usan ustedes para programar?",
+        "imagen": "4.jpg",
+        "user_id": 4,
+        "comentarios": []
+    },
+    {
+        "id": 5,
+        "titulo": "Hola Mundo en Rust",
+        "descripcion": "Acabo de probar Rust y me ha sorprendido lo rápido que compila el \"Hola Mundo\".",
+        "imagen": "5.jpg",
+        "user_id": 1,
+        "comentarios": []
+    },
+    {
+        "id": 6,
+        "titulo": "Dark mode obligatorio",
+        "descripcion": "Si una app no tiene modo oscuro, ni la instalo. ¿A alguien más le pasa?",
+        "imagen": "6.jpg",
+        "user_id": 2,
+        "comentarios": [
+            {
+                "user_id": 3,
+                "comentario": "Modo claro solo cuando hay sol y café."
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "titulo": "Aprendiendo Docker",
+        "descripcion": "Estoy montando mis proyectos en contenedores. La curva de aprendizaje es dura, pero merece la pena.",
+        "imagen": "7.jpg",
+        "user_id": 3,
+        "comentarios": []
+    },
+    {
+        "id": 8,
+        "titulo": "Mi primer bug en producción",
+        "descripcion": "Rompí la app en producción por un ; mal puesto. ¿Quién no?",
+        "imagen": "8.jpg",
+        "user_id": 4,
+        "comentarios": [
+            { "user_id": 2, "comentario": "El verdadero bautizo de fuego." },
+            { "user_id": 1, "comentario": "Bienvenido al club." }
+        ]
+    },
+    {
+        "id": 9,
+        "titulo": "Framework favorito",
+        "descripcion": "¿Son más de Laravel, Django, Spring o Express? Yo sigo indeciso.",
+        "imagen": "9.jpg",
+        "user_id": 1,
+        "comentarios": []
+    },
+    {
+        "id": 10,
+        "titulo": "Algoritmos de ordenación",
+        "descripcion": "¿Cuál creen que es más eficiente en la práctica: QuickSort o MergeSort?",
+        "imagen": "10.jpg",
+        "user_id": 2,
+        "comentarios": [
+            {
+                "user_id": 4,
+                "comentario": "Depende del caso, QuickSort suele ganar."
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "titulo": "Aprendiendo Python",
+        "descripcion": "Hoy hice mi primer script en Python. Me sorprende lo sencillo que es comparado con otros lenguajes.",
+        "imagen": "11.jpg",
+        "user_id": 3,
+        "comentarios": []
+    },
+    {
+        "id": 12,
+        "titulo": "¿Vale la pena TypeScript?",
+        "descripcion": "Llevo un tiempo usando JavaScript y me recomiendan migrar a TypeScript. ¿Realmente vale la pena?",
+        "imagen": "12.jpg",
+        "user_id": 4,
+        "comentarios": [
+            {
+                "user_id": 1,
+                "comentario": "Sí, sobre todo en proyectos grandes."
+            },
+            { "user_id": 3, "comentario": "Para cosas rápidas, con JS sobra." }
+        ]
+    },
+    {
+        "id": 13,
+        "titulo": "Mi peor error en SQL",
+        "descripcion": "Ayer ejecuté un DELETE sin WHERE. Perdí medio día recuperando datos.",
+        "imagen": "13.jpg",
+        "user_id": 1,
+        "comentarios": []
+    },
+    {
+        "id": 14,
+        "titulo": "Empezando con React",
+        "descripcion": "Al principio me parecía raro JSX, pero ahora me encanta cómo organiza la lógica y la vista.",
+        "imagen": "14.jpg",
+        "user_id": 2,
+        "comentarios": []
+    },
+    {
+        "id": 15,
+        "titulo": "Teclados mecánicos",
+        "descripcion": "¿Alguien más programa con teclado mecánico? Escribir código se siente diferente.",
+        "imagen": "15.jpg",
+        "user_id": 3,
+        "comentarios": [
+            {
+                "user_id": 4,
+                "comentario": "Tengo uno con switches azules, música para mis oídos."
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "titulo": "Aprendiendo RegEx",
+        "descripcion": "Después de una semana de luchar, por fin entendí las expresiones regulares. ¡Qué poder!",
+        "imagen": "16.jpg",
+        "user_id": 4,
+        "comentarios": []
+    },
+    {
+        "id": 17,
+        "titulo": "Open Source",
+        "descripcion": "Estoy pensando en contribuir a un proyecto de código abierto. ¿Consejos para empezar?",
+        "imagen": "17.jpg",
+        "user_id": 1,
+        "comentarios": [
+            {
+                "user_id": 2,
+                "comentario": "Empieza con issues etiquetadas como \"good first issue\"."
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "titulo": "El código más feo que he visto",
+        "descripcion": "Hoy revisé un PR lleno de variables llamadas a1, a2, a3… un infierno.",
+        "imagen": "18.jpg",
+        "user_id": 2,
+        "comentarios": []
+    },
+    {
+        "id": 19,
+        "titulo": "Mi stack actual",
+        "descripcion": "Uso Laravel + Vue + MySQL. ¿Cuál es su stack favorito?",
+        "imagen": "19.jpg",
+        "user_id": 3,
+        "comentarios": [
+            {
+                "user_id": 3,
+                "comentario": "Yo soy de Django + React + Postgres."
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "titulo": "Compilando por primera vez",
+        "descripcion": "Ayer compilé un kernel Linux como práctica. Tardó horas, pero aprendí un montón.",
+        "imagen": "20.jpg",
+        "user_id": 4,
+        "comentarios": []
+    }
+]
