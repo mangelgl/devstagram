@@ -36,4 +36,19 @@ class Post extends Model
     {
         return $this->hasMany(Comentario::class);
     }
+
+    /**
+     * One to Many Relation
+     * A post can have many likes
+     */
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function checkLike(User $user)
+    {
+        // Revisa si el usuario le dió like a la publicación
+        return $this->likes->contains('user_id', $user->id);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Like;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -49,7 +50,7 @@ class PostController extends Controller
     {
         return view('posts.show', [
             'user' => $user,
-            'post' => $post
+            'post' => $post,
         ]);
     }
 

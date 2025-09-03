@@ -46,12 +46,21 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * One to Many Relation
+     * An user can have multiple posts
+     */
     public function posts()
     {
-        /**
-         * One to Many Relation
-         * An user can have multiple posts
-         */
         return $this->hasMany(Post::class);
+    }
+
+    /**
+     * One to Many Relation
+     * An user can have multiple likes
+     */
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }

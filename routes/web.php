@@ -6,6 +6,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ImagenController;
+use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,6 +29,7 @@ Route::get('/{user:username}/posts/{post}', [PostController::class, 'show'])->na
 
 Route::post('/{user:username}/posts/{post}', [ComentarioController::class, 'store'])->middleware('auth')->name('comentarios.store');
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->middleware('auth')->name('posts.destroy');
-
+Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->middleware('auth')->name('likes.store');
+Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->middleware('auth')->name('likes.destroy');
 
 Route::post('/imagenes', [ImagenController::class, 'store'])->middleware(['auth'])->name('imagenes.store');
