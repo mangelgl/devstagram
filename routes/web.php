@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComentarioController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
@@ -41,3 +42,7 @@ Route::post('/{user:username}/posts/{post}', [ComentarioController::class, 'stor
 /** Likes **/
 Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->middleware('auth')->name('likes.store');
 Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->middleware('auth')->name('likes.destroy');
+
+/** Seguidores y Siguiendo **/
+Route::post('{user:username}/follow', [FollowerController::class, 'store'])->middleware('auth')->name('users.follow');
+Route::delete('{user:username}/unfollow', [FollowerController::class, 'destroy'])->middleware('auth')->name('users.unfollow');
