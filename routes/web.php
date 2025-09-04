@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
@@ -11,9 +12,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PerfilController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('principal');
-})->name('principal');
+Route::get('/', HomeController::class)->middleware('auth')->name('home');
 
 /* Authentication Routes */
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
