@@ -1,3 +1,3 @@
 ## Website
 
-- [Devstagram]([https://laravel.com/docs/routing](https://devstagram-mangelgl.nue.dom.my.id/))
+[Devstagram](https://devstagram-mangelgl.nue.dom.my.id/)
