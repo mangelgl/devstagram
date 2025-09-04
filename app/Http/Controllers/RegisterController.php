@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,7 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         // Modificar el username para evitar duplicados
-        $request->request->add(['username' => strtolower($request->username)]);
+        $request->request->add(['username' => Str::slug(strtolower($request->username))]);
 
         // Validacion
         $request->validate([
