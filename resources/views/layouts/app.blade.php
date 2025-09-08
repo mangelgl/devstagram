@@ -23,46 +23,47 @@
             {{-- Título --}}
             <h1 class="text-3xl font-black"><a href="{{ route('home') }}">Devstagram</a></h1>
 
-            {{-- Búsqueda --}}
-            <div class="sm:hidden lg:block mx-auto relative w-4/12">
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6 text-gray-400">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                        </svg>
+            @auth
+                {{-- Búsqueda --}}
+                <div class="sm:hidden lg:block mx-auto relative w-4/12">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6 text-gray-400">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                            </svg>
+                        </div>
+                        <input type="text" id="searchInput" name="query" placeholder="Busca"
+                            class="block w-full rounded-xl bg-gray-200 p-2.5 pl-10 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
-                    <input type="text" id="searchInput" name="query" placeholder="Busca"
-                        class="block w-full rounded-xl bg-gray-200 p-2.5 pl-10 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+                    <div id="resultados"
+                        class="absolute z-10 w-full mt-2 hidden rounded-xl border border-gray-300 bg-gray-400 p-3 shadow-lg overflow-hidden">
+                    </div>
                 </div>
 
-                <div id="resultados"
-                    class="absolute z-10 w-full mt-2 hidden rounded-xl border border-gray-300 bg-gray-400 p-3 shadow-lg overflow-hidden">
-                </div>
-            </div>
+                <script>
+                    document.getElementById('searchInput').addEventListener('keyup', function() {
+                        let query = this.value;
+                        let resultsContainer = document.getElementById('resultados');
 
-            <script>
-                document.getElementById('searchInput').addEventListener('keyup', function() {
-                    let query = this.value;
-                    let resultsContainer = document.getElementById('resultados');
+                        if (query.length > 3) {
+                            // Muestra el contenedor de resultados
+                            resultsContainer.classList.remove('hidden');
 
-                    if (query.length > 3) {
-                        // Muestra el contenedor de resultados
-                        resultsContainer.classList.remove('hidden');
+                            fetch(`{{ route('perfil.buscar') }}?query=${query}`)
+                                .then(response => response.json())
+                                .then(users => {
+                                    let html = '';
+                                    if (users.length > 0) {
+                                        users.forEach(user => {
+                                            // Construye el HTML dinámicamente con los datos del usuario
+                                            let userImage = user.imagen ? `/perfiles/${user.imagen}` :
+                                                '/img/usuario.svg';
+                                            let profileUrl = `/${user.username}`;
 
-                        fetch(`{{ route('perfil.buscar') }}?query=${query}`)
-                            .then(response => response.json())
-                            .then(users => {
-                                let html = '';
-                                if (users.length > 0) {
-                                    users.forEach(user => {
-                                        // Construye el HTML dinámicamente con los datos del usuario
-                                        let userImage = user.imagen ? `/perfiles/${user.imagen}` :
-                                            '/img/usuario.svg';
-                                        let profileUrl = `/${user.username}`;
-
-                                        html += `
+                                            html += `
                                         <a href="${profileUrl}">
                                             <div class="w-full bg-gray-400 hover:bg-gray-300 hover:cursor-pointer flex justify-between items-center rounded-md">
                                                 <div class="flex justify-center items-center ">
@@ -76,41 +77,41 @@
                                                 </div>
                                             </div>
                                         </a>`;
-                                    });
-                                } else {
-                                    html = '<p class="text-center text-gray-500">No se encontraron resultados.</p>';
-                                }
-                                resultsContainer.innerHTML = html;
-                            })
-                            .catch(error => console.error('Error:', error));
+                                        });
+                                    } else {
+                                        html = '<p class="text-center text-gray-500">No se encontraron resultados.</p>';
+                                    }
+                                    resultsContainer.innerHTML = html;
+                                })
+                                .catch(error => console.error('Error:', error));
 
-                    } else {
-                        // Oculta el contenedor si no hay suficiente texto
-                        resultsContainer.classList.add('hidden');
+                        } else {
+                            // Oculta el contenedor si no hay suficiente texto
+                            resultsContainer.classList.add('hidden');
+                            resultsContainer.innerHTML = '';
+                        }
+                    });
+                    /* Oculta los resultados si el usuario hace click fuera  */
+                    document.addEventListener('click', function(event) {
+                        let searchContainer = document.getElementById('resultados');
+                        if (!searchContainer.contains(event.target)) {
+                            document.getElementById('resultados').classList.add('hidden');
+                        }
+                    });
+
+                    document.addEventListener('DOMContentLoaded', (event) => {
+                        // Limpia el campo de búsqueda
+                        document.getElementById('searchInput').value = '';
+
+                        // Opcional: Oculta y limpia el contenedor de resultados
+                        let resultsContainer = document.getElementById('resultados');
                         resultsContainer.innerHTML = '';
-                    }
-                });
-                /* Oculta los resultados si el usuario hace click fuera  */
-                document.addEventListener('click', function(event) {
-                    let searchContainer = document.getElementById('resultados');
-                    if (!searchContainer.contains(event.target)) {
-                        document.getElementById('resultados').classList.add('hidden');
-                    }
-                });
+                        resultsContainer.classList.add('hidden');
+                    });
+                </script>
+                {{-- Navegación --}}
+                <div>
 
-                document.addEventListener('DOMContentLoaded', (event) => {
-                    // Limpia el campo de búsqueda
-                    document.getElementById('searchInput').value = '';
-
-                    // Opcional: Oculta y limpia el contenedor de resultados
-                    let resultsContainer = document.getElementById('resultados');
-                    resultsContainer.innerHTML = '';
-                    resultsContainer.classList.add('hidden');
-                });
-            </script>
-            {{-- Navegación --}}
-            <div>
-                @auth
                     <nav aria-label="Authenticated users menu" class="flex gap-2 items-center">
                         {{-- Crear publicaciones --}}
                         <a href="{{ route('posts.create') }}"
