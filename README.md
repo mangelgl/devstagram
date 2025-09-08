@@ -6,3 +6,4 @@
 
 -   Show followers and following list in user profile
 -   Remember password feature
+-   Input to search profiles
