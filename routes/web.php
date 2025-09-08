@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->middleware('auth')->name('home');
 
+
 /* Authentication Routes */
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
@@ -27,6 +28,7 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 /** Perfil **/
 Route::get('/editar-perfil', [PerfilController::class, 'index'])->middleware('auth')->name('perfil.index');
 Route::post('/editar-perfil', [PerfilController::class, 'store'])->middleware('auth')->name('perfil.store');
+Route::get('/search', [PerfilController::class, 'autocompletar'])->name('perfil.buscar');
 Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index'); // Route model binding
 Route::get('/{user:username}/followers', [FollowerController::class, 'index'])->middleware('auth')->name('followers.index');
 Route::get('/{user:username}/followings', [FollowingController::class, 'index'])->middleware('auth')->name('followings.index');

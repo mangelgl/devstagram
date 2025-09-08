@@ -84,4 +84,15 @@ class PerfilController extends Controller
 
         return redirect()->route('posts.index', $usuario->username)->with('message', 'Usuario actualizado correctamente');
     }
+
+    public function autocompletar(Request $request)
+    {
+        $query = $request->input('query');
+        $users = User::where('name', 'like', "%{$query}%")
+            ->orWhere('email', 'like', "%{$query}%")
+            ->limit(10) // Limita el número de resultados para mejorar el rendimiento
+            ->get();
+
+        return response()->json($users);
+    }
 }

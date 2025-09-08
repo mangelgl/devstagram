@@ -5,4 +5,3 @@
 ## To Do List
 
 -   Remember password feature
--   Input to search profiles
