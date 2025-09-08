@@ -5,8 +5,16 @@
 @endsection
 
 @section('contenido')
-    <div class="md:flex md:justify-center">
-        <div class=" md:w-1/2 bg-white shadow p-6">
+    <div class="md:flex md:justify-center flex flex-col items-center">
+        <div class="md:w-1/2 p-6">
+            <a href="{{ url()->previous() }}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray"
+                    class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                </svg>
+            </a>
+        </div>
+        <div class="md:w-1/2 bg-white shadow p-6 rounded-md">
             <form action="{{ route('perfil.store') }}" method="POST" enctype="multipart/form-data" class="mt-10 md:mt-0">
                 @csrf
                 <div class="mb-5">
