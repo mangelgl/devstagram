@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\FollowingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -27,6 +28,8 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('/editar-perfil', [PerfilController::class, 'index'])->middleware('auth')->name('perfil.index');
 Route::post('/editar-perfil', [PerfilController::class, 'store'])->middleware('auth')->name('perfil.store');
 Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index'); // Route model binding
+Route::get('/{user:username}/followers', [FollowerController::class, 'index'])->middleware('auth')->name('followers.index');
+Route::get('/{user:username}/followings', [FollowingController::class, 'index'])->middleware('auth')->name('followings.index');
 
 /** Posts **/
 Route::get('/posts/create', [PostController::class, 'create'])->middleware(['auth'])->name('posts.create');

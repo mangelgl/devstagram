@@ -16,14 +16,17 @@
                     <p class="text-gray-700 text-2xl">{{ $user->name }}</p>
                 </div>
 
+                {{-- Seguidores --}}
                 <p class="text-gray-800 text-sm mb-3 font-bold mt-5">
-                    {{ $user->followers->count() }}
+                    <a href="{{ route('followers.index', $user) }}">{{ $user->followers->count() }}</a>
                     <span class="font-normal">@choice('seguidor|seguidores', $user->followers->count())</span>
                 </p>
+                {{-- Seguidos --}}
                 <p class="text-gray-800 text-sm mb-3 font-bold">
-                    {{ $user->followings->count() }}
+                    <a href="{{ route('followings.index', $user) }}">{{ $user->followings->count() }}</a>
                     <span class="font-normal">seguidos</span>
                 </p>
+                {{-- Posts --}}
                 <p class="text-gray-800 text-sm mb-3 font-bold">
                     {{ $user->posts->count() }}
                     <span class="font-normal">Posts</span>

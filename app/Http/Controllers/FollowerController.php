@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class FollowerController extends Controller
 {
+    public function index(User $user)
+    {
+        $followers = $user->followers()->get();
+
+        return view('followers.index', [
+            'user' => $user,
+            'followers' => $followers,
+        ]);
+    }
     public function store(User $user)
     {
         $user->followers()->attach(Auth::user()->id);
