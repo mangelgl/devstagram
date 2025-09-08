@@ -31,6 +31,6 @@
             </div>
         </div>
     @empty
-        <p class="text-gray-600 font-bold uppercase">No se han encontrado seguidores.</p>
+        <p class="text-gray-600 font-bold uppercase">No se han encontrado usuarios.</p>
     @endforelse
 </div>
