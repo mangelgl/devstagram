@@ -23,14 +23,17 @@ Descarga el código fuente y entra en el directorio.
 ```bash
 git clone git@github.com:mangelgl/devstagram.git devstagram
 cd devstagram
+```
 
 ### 2. Configurar variables de entorno
 ```bash
 cp .env.example .env
+```
 
 ### 3. Levantar los contenedores
 ```bash
 docker compose up -d --build
+```
 
 ### 4. Instalar dependencias
 ```bash
@@ -39,6 +42,7 @@ docker compose exec app composer install
 
 # Generar la key de encriptación de Laravel
 docker compose exec app php artisan key:generate
+```
 
 ### 5. Ejecutar Migraciones
 ```bash
@@ -46,11 +50,13 @@ docker compose exec app php artisan migrate
 
 # (Opcional) Si quieres poblar la base de datos con datos falsos
 docker compose exec app php artisan db:seed
+```
 
 ### 6. Instalar dependencias del frontend
 ```bash
 npm install
 npm run build
+```
 
 ## To Do List
 
