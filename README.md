@@ -25,17 +25,23 @@ git clone git@github.com:mangelgl/devstagram.git devstagram
 cd devstagram
 ```
 
-### 2. Configurar variables de entorno
+### 2. Cambiar permisos
+```bash
+sudo chmod -R 775 /var/www/html/storage
+sudo chmod -R 775 /var/www/html/bootstrap/cache
+```
+
+### 3. Configurar variables de entorno
 ```bash
 cp .env.example .env
 ```
 
-### 3. Levantar los contenedores
+### 4. Levantar los contenedores
 ```bash
 docker compose up -d --build
 ```
 
-### 4. Instalar dependencias
+### 5. Instalar dependencias
 ```bash
 # Instalar dependencias de PHP
 docker compose exec app composer install
@@ -44,7 +50,7 @@ docker compose exec app composer install
 docker compose exec app php artisan key:generate
 ```
 
-### 5. Ejecutar Migraciones
+### 6. Ejecutar Migraciones
 ```bash
 docker compose exec app php artisan migrate
 
@@ -52,7 +58,7 @@ docker compose exec app php artisan migrate
 docker compose exec app php artisan db:seed
 ```
 
-### 6. Instalar dependencias del frontend
+### 7. Instalar dependencias del frontend
 ```bash
 npm install
 npm run build
