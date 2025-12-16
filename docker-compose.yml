@@ -23,10 +23,10 @@ services:
             - devstagram-app
         depends_on:
             - mysql
-            - redis
-            - meilisearch
-            - mailpit
-            - selenium
+            # - redis
+            # - meilisearch
+            # - mailpit
+            # - selenium
         restart: unless-stopped
     # Base de datos MySQL
     mysql:
@@ -36,6 +36,8 @@ services:
             MYSQL_DATABASE: '${DB_DATABASE}'
             MYSQL_USER: '${DB_USERNAME}'
             MYSQL_PASSWORD: '${DB_PASSWORD}'
+        ports:
+            - '${FORWARD_DB_PORT:-3306}:3306'
         volumes:
             - 'mysql:/var/lib/mysql'
             - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
@@ -44,54 +46,54 @@ services:
         restart: unless-stopped
 
     # Caché y sistema de colas  Redis
-    redis:
-        image: 'redis:alpine'
-        # ports:
-        #     - '${FORWARD_REDIS_PORT:-6379}:6379'
-        volumes:
-            - 'redis:/data'
-        networks:
-            - devstagram-app
-        restart: unless-stopped
+    # redis:
+    #     image: 'redis:alpine'
+    #     # ports:
+    #     #     - '${FORWARD_REDIS_PORT:-6379}:6379'
+    #     volumes:
+    #         - 'redis:/data'
+    #     networks:
+    #         - devstagram-app
+    #     restart: unless-stopped
 
-    # Motor de búsqueda Meilisearch
-    meilisearch:
-        image: 'getmeili/meilisearch:latest'
-        environment:
-            MEILI_NO_ANALYTICS: '${MEILISEARCH_NO_ANALYTICS:-false}'
-        volumes:
-            - 'meilisearch:/meili_data'
-        networks:
-            - devstagram-app
-        restart: unless-stopped
+    # # Motor de búsqueda Meilisearch
+    # meilisearch:
+    #     image: 'getmeili/meilisearch:latest'
+    #     environment:
+    #         MEILI_NO_ANALYTICS: '${MEILISEARCH_NO_ANALYTICS:-false}'
+    #     volumes:
+    #         - 'meilisearch:/meili_data'
+    #     networks:
+    #         - devstagram-app
+    #     restart: unless-stopped
 
-    # Servidor de correo Mailpit
-    mailpit:
-        image: 'axllent/mailpit:latest'
-        # ports:
-        #     - '${FORWARD_MAILPIT_PORT:-1025}:1025'
-        #     - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
-        networks:
-            - devstagram-app
-        restart: unless-stopped
+    # # Servidor de correo Mailpit
+    # mailpit:
+    #     image: 'axllent/mailpit:latest'
+    #     # ports:
+    #     #     - '${FORWARD_MAILPIT_PORT:-1025}:1025'
+    #     #     - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
+    #     networks:
+    #         - devstagram-app
+    #     restart: unless-stopped
 
-    # Servidor de Selenium para pruebas de navegador
-    selenium:
-        image: selenium/standalone-chromium
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
-        volumes:
-            - '/dev/shm:/dev/shm'
-        networks:
-            - devstagram-app
-        restart: unless-stopped
+    # # Servidor de Selenium para pruebas de navegador
+    # selenium:
+    #     image: selenium/standalone-chromium
+    #     extra_hosts:
+    #         - 'host.docker.internal:host-gateway'
+    #     volumes:
+    #         - '/dev/shm:/dev/shm'
+    #     networks:
+    #         - devstagram-app
+    #     restart: unless-stopped
 networks:
     devstagram-app:
         driver: bridge
 volumes:
     mysql:
         driver: local
-    redis:
-        driver: local
-    meilisearch:
-        driver: local
+    # redis:
+    #     driver: local
+    # meilisearch:
+    #     driver: local
