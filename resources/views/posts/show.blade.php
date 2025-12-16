@@ -9,7 +9,7 @@
         <livewire:back-button :width="'w-full'" />
         <div class="container mx-auto md:flex">
             <div class="md:w-1/2">
-                <img src="{{ asset('uploads') . '/' . $post->imagen }}" alt="{{ $post->titulo }}">
+                <img src="{{ asset('img/posts') . '/' . $post->imagen }}" alt="{{ $post->titulo }}">
                 <div class="p-3 flex items-center gap-3">
                     @auth
                         <livewire:like-post :post="$post" />
