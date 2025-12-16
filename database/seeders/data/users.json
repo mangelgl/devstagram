@@ -1,22 +1,27 @@
 [
     {
-        "name": "Miguel Ángel García",
-        "username": "mangelgl",
-        "email": "mangel.garcia@gmail.com"
+        "name": "Alice Smith",
+        "username": "alice",
+        "email": "alice@example.com"
     },
     {
-        "name": "Laura Sánchez",
-        "username": "lauras",
-        "email": "laura.sanchez@gmail.com"
+        "name": "Bob Jones",
+        "username": "bob",
+        "email": "bob@example.com"
     },
     {
-        "name": "Carlos Ruiz",
-        "username": "carlitosr",
-        "email": "carlos.ruiz@gmail.com"
+        "name": "Charlie Brown",
+        "username": "charlie",
+        "email": "charlie@example.com"
     },
     {
-        "name": "Pablo Pérez",
-        "username": "pablop",
-        "email": "pablo.perez@gmail.com"
+        "name": "Jane Doe",
+        "username": "janedoe",
+        "email": "jane.doe@example.com"
+    },
+    {
+        "name": "John Doe",
+        "username": "johndoe",
+        "email": "john.doe@example.com"
     }
 ]
